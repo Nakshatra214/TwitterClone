@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }} - Twitter Clone{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3">
+            <div class="card profile-card mb-3">
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}" class="rounded-circle profile-image mb-3" width="100" height="100" alt="Profile Picture">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="text-muted">@{{ user.username }}</p>
+                    <p class="card-text text-muted">{{ user.bio or 'No bio yet' }}</p>
+                    {% if user == current_user %}
+                    <a href="{{ url_for('edit_profile') }}" class="btn btn-outline-primary">Edit Profile</a>
+                    {% else %}
+                    <button class="btn {% if current_user.is_following(user) %}btn-outline-primary{% else %}btn-primary{% endif %} follow-btn" 
+                            data-user-id="{{ user.id }}">
+                        {% if current_user.is_following(user) %}Unfollow{% else %}Follow{% endif %}
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card profile-info-card mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">Profile Info</h6>
+                    <ul class="list-unstyled">
+                        {% if user.location %}
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {{ user.location }}</li>
+                        {% endif %}
+                        {% if user.website %}
+                        <li class="mb-2"><i class="fas fa-link me-2"></i> <a href="{{ user.website }}" target="_blank" class="text-decoration-none">{{ user.website }}</a></li>
+                        {% endif %}
+                        <li class="mb-2"><i class="fas fa-calendar-alt me-2"></i> Joined {{ user.created_at.strftime('%B %Y') }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card sidebar-nav mb-3">
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('dashboard') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-home me-2"></i> Home
+                    </a>
+                    <a href="{{ url_for('profile', username=current_user.username) }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user me-2"></i> My Profile
+                    </a>
+                    <a href="{{ url_for('edit_profile') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-cog me-2"></i> Settings
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="list-group-item list-group-item-action text-danger">
+                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-6">
+            <div class="card profile-stats-card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">{{ user.username }}'s Tweets</h5>
+                        <div class="profile-stats">
+                            <span class="badge bg-primary me-2">{{ user.tweets.count() }} Tweets</span>
+                            <span class="badge bg-secondary me-2">{{ user.followers.count() }} Followers</span>
+                            <span class="badge bg-info">{{ user.following.count() }} Following</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweets Feed -->
+            <div class="tweets-feed">
+                {% for tweet in tweets %}
+                <div class="card tweet-card animate-in mb-3">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <img src="{{ url_for('static', filename='profile_pics/' + tweet.author.profile_image) }}" class="rounded-circle me-3" width="50" height="50" alt="Profile Picture">
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0">{{ tweet.author.username }}</h6>
+                                        <small class="text-muted">@{{ tweet.author.username }} · {{ tweet.created_at.strftime('%b %d') }}</small>
+                                    </div>
+                                    {% if tweet.author == current_user %}
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item text-danger" href="{{ url_for('delete_tweet', tweet_id=tweet.id) }}">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <p class="card-text mt-2">{{ tweet.content }}</p>
+                                {% if tweet.image %}
+                                <img src="{{ url_for('static', filename='tweets/' + tweet.image) }}" class="img-fluid rounded tweet-image" alt="Tweet image">
+                                {% endif %}
+                                <div class="tweet-actions mt-3">
+                                    <button class="btn btn-link text-muted p-0 me-3" data-action="like" data-tweet-id="{{ tweet.id }}">
+                                        <i class="far fa-heart{% if tweet in current_user.liked_tweets %} text-danger fas{% endif %}"></i>
+                                        <span class="likes-count">{{ tweet.likes.count() }}</span>
+                                    </button>
+                                    <button class="btn btn-link text-muted p-0 me-3" data-action="retweet" data-tweet-id="{{ tweet.id }}">
+                                        <i class="fas fa-retweet{% if tweet in current_user.retweets %} text-success{% endif %}"></i>
+                                        <span class="retweets-count">{{ tweet.retweets.count() }}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-feather-alt fa-3x text-muted mb-3"></i>
+                    <h5>No tweets yet</h5>
+                    <p class="text-muted">When {{ user.username }} posts a tweet, it will show up here.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h6 class="card-title mb-0">Who to Follow</h6>
+                </div>
+                <div class="list-group list-group-flush">
+                    {% for suggested_user in suggested_users %}
+                    <div class="list-group-item">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ url_for('static', filename='profile_pics/' + suggested_user.profile_image) }}" class="rounded-circle me-2" width="40" height="40" alt="Profile Picture">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0">{{ suggested_user.username }}</h6>
+                                <small class="text-muted">@{{ suggested_user.username }}</small>
+                            </div>
+                            <button class="btn {% if current_user.is_following(suggested_user) %}btn-outline-primary{% else %}btn-primary{% endif %} btn-sm follow-btn" 
+                                    data-user-id="{{ suggested_user.id }}">
+                                {% if current_user.is_following(suggested_user) %}Unfollow{% else %}Follow{% endif %}
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get CSRF token from cookie
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrfToken = getCookie('csrf_token');
+
+    // Like and Retweet functionality
+    document.querySelectorAll('[data-action]').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.dataset.action;
+            const tweetId = this.dataset.tweetId;
+            const icon = this.querySelector('i');
+            const countSpan = this.querySelector('span');
+
+            fetch(`/api/${action}/${tweetId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (action === 'like') {
+                        icon.classList.toggle('far');
+                        icon.classList.toggle('fas');
+                        icon.classList.toggle('text-danger');
+                        countSpan.textContent = data.likes_count;
+                    } else {
+                        icon.classList.toggle('text-success');
+                        countSpan.textContent = data.retweets_count;
+                    }
+                }
+            });
+        });
+    });
+
+    // Follow/Unfollow functionality
+    document.querySelectorAll('.follow-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const userId = this.dataset.userId;
+            const isFollowing = this.textContent.trim() === 'Unfollow';
+            
+            fetch(`/api/follow/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.textContent = isFollowing ? 'Follow' : 'Unfollow';
+                    this.classList.toggle('btn-primary');
+                    this.classList.toggle('btn-outline-primary');
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

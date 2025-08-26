@@ -1,0 +1,1563 @@
+:root {
+    --primary-color: #1DA1F2;
+    --background-color: #15202B;
+    --secondary-background: #192734;
+    --text-color: #FFFFFF;
+    --secondary-text: #8899A6;
+    --border-color: #38444D;
+    --hover-color: #1A91DA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+nav {
+    background-color: var(--secondary-background);
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 2rem;
+}
+
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: none;
+}
+
+.alert-success {
+    background-color: #1B4332;
+    color: #FFFFFF;
+}
+
+.alert-danger {
+    background-color: #7F1D1D;
+    color: #FFFFFF;
+}
+
+/* Tweet Card Styles */
+.tweet-card {
+    border-width: 2px !important;
+    background-color: rgba(29, 161, 242, 0.1) !important;
+    margin-bottom: 25px !important;
+}
+
+.tweet-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
+    background-color: rgba(29, 161, 242, 0.15) !important;
+}
+
+.tweet-card .card-body {
+    padding: 1.5rem;
+}
+
+.tweet-card img.rounded-circle {
+    width: 60px;
+    height: 60px;
+}
+
+.tweet-card .card-text {
+    font-size: 1.3rem !important;
+    margin: 1.2rem 0 !important;
+    line-height: 1.6 !important;
+    color: white !important;
+    font-weight: 500;
+}
+
+.tweet-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tweet-actions button {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+    font-size: 1.1rem;
+    padding: 10px 15px !important;
+    border-radius: 20px;
+    margin-right: 15px !important;
+    color: white !important;
+}
+
+.tweet-actions button:hover {
+    background-color: rgba(29, 161, 242, 0.2) !important;
+    transform: scale(1.05);
+}
+
+.tweet-actions button:active {
+    transform: scale(0.98);
+}
+
+.tweet-actions i {
+    font-size: 1.4rem !important;
+    margin-right: 8px;
+}
+
+.tweet-actions button span {
+    font-size: 1.1rem !important;
+    font-weight: 500;
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--secondary-background);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Profile Styles */
+.profile-header {
+    background-color: var(--secondary-background);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    color: var(--secondary-text);
+}
+
+/* Navigation Container */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-brand i {
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links a i {
+    font-size: 1.2rem;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--secondary-background);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Alert Icons */
+.alert i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    nav {
+        padding: 0.5rem;
+    }
+    
+    nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .tweet-card {
+        padding: 0.75rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Tweet Form */
+.tweet-form-container {
+    background-color: var(--secondary-background);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.tweet-input-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.tweet-input-wrapper {
+    flex: 1;
+}
+
+.tweet-input {
+    width: 100%;
+    min-height: 100px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text-color);
+    resize: none;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.tweet-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.tweet-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tweet-form-attachments {
+    display: flex;
+    gap: 1rem;
+}
+
+.tweet-attachment-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.tweet-attachment-btn:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+/* Tweet Image */
+.tweet-image {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+/* Tweets Feed */
+.tweets-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-username {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.tweet-timestamp {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 0 1rem;
+    }
+
+    .tweet-input-container {
+        flex-direction: column;
+    }
+
+    .tweet-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tweet-form-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+}
+
+/* Home Page Styles */
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--secondary-background);
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background-color: var(--secondary-background);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--secondary-text);
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .features-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Authentication Styles */
+.auth-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 0 1rem;
+}
+
+.auth-box {
+    background-color: var(--secondary-background);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.auth-box h2 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.auth-subtitle {
+    color: var(--secondary-text);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.auth-links {
+    text-align: center;
+    color: var(--secondary-text);
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.auth-links a:hover {
+    color: var(--hover-color);
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 80px auto;
+    }
+
+    .auth-box {
+        padding: 1.5rem;
+    }
+
+    .auth-box h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand i {
+    color: #1da1f2;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Tweet Cards */
+.tweet-card {
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.tweet-card .card-body {
+    padding: 1rem;
+}
+
+.tweet-card img.rounded-circle {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.tweet-card .tweet-image {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Profile */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+.form-control:focus {
+    border-color: #1da1f2;
+    box-shadow: 0 0 0 0.2rem rgba(29, 161, 242, 0.25);
+}
+
+.btn-primary {
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.btn-primary:hover {
+    background-color: #1991db;
+    border-color: #1991db;
+}
+
+/* Authentication Pages */
+.auth-container {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.auth-box {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1da1f2;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+/* Tweet Form */
+.tweet-form {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.tweet-form textarea {
+    border: none;
+    resize: none;
+    padding: 0.5rem;
+}
+
+.tweet-form textarea:focus {
+    box-shadow: none;
+}
+
+.tweet-form .btn {
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+}
+
+/* Sidebar */
+.sidebar-card {
+    position: sticky;
+    top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 1rem;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .tweet-card .card-body {
+        padding: 0.75rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tweet-card {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1da1f2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Image Preview */
+#imagePreview img {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.5em 1em;
+    border-radius: 20px;
+}
+
+/* List Group */
+.list-group-item {
+    border: none;
+    padding: 0.75rem 1rem;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Alert Styles */
+.alert {
+    border: none;
+    border-radius: 10px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+.btn-outline-primary {
+    color: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1da1f2;
+    color: #fff;
+}
+
+/* Link Styles */
+a {
+    color: #1da1f2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1991db;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    border-top: 1px solid #e1e8ed;
+}
+
+/* Landing Page Styles */
+.landing-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.landing-left {
+    flex: 1;
+    background-color: #1da1f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+}
+
+.landing-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 1%, transparent 1%),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 1%, transparent 1%);
+    background-size: 100px 100px;
+    opacity: 0.3;
+    animation: patternMove 60s linear infinite;
+}
+
+@keyframes patternMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+.landing-features {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.feature-item.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+}
+
+.feature-content p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.landing-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.auth-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 0;
+}
+
+.auth-box {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.auth-box .fab.fa-twitter {
+    color: #1da1f2;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 6px rgba(29,161,242,0.2));
+}
+
+.auth-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0F1419;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.auth-subtitle {
+    font-size: 1.5rem;
+    color: #536471;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+.floating-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.floating-label-group input {
+    height: 56px;
+    font-size: 1rem;
+    padding: 1rem 1rem 0.5rem;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.floating-label-group label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #536471;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.floating-label-group.focused label,
+.floating-label-group input:not(:placeholder-shown) + label {
+    top: 0.75rem;
+    font-size: 0.75rem;
+    color: #1da1f2;
+}
+
+.floating-label-group input:focus {
+    border-color: #1da1f2;
+    box-shadow: 0 0 0 4px rgba(29,161,242,0.1);
+    outline: none;
+}
+
+.form-text {
+    color: #536471;
+    font-size: 0.875rem;
+}
+
+.auth-separator {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.auth-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ced4da;
+}
+
+.auth-separator span {
+    background-color: #fff;
+    padding: 0 1rem;
+    color: #536471;
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn {
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #1da1f2;
+    border: none;
+    height: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #1a91da;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29,161,242,0.2);
+}
+
+.btn-outline-primary {
+    color: #1da1f2;
+    border: 1px solid #1da1f2;
+    background-color: transparent;
+    height: 50px;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(29,161,242,0.1);
+    border-color: #1da1f2;
+    color: #1da1f2;
+    transform: translateY(-1px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Form validation styles */
+.form-control.is-valid {
+    border-color: #28a745;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landing-container {
+        flex-direction: column;
+    }
+
+    .landing-left {
+        padding: 3rem 1.5rem;
+        min-height: 60vh;
+    }
+
+    .landing-right {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-box {
+        padding: 2rem;
+    }
+
+    .auth-title {
+        font-size: 2rem;
+    }
+
+    .auth-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .feature-item {
+        margin-bottom: 1.5rem;
+        padding: 0.75rem;
+    }
+
+    .feature-item i {
+        font-size: 1.5rem;
+        padding: 0.75rem;
+        min-width: 50px;
+    }
+
+    .feature-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .feature-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for feature items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.feature-item {
+    animation: slideIn 0.6s ease-out forwards;
+    animation-play-state: paused;
+}
+
+.feature-item.animate-in {
+    animation-play-state: running;
+}
+
+/* Feature banner styles */
+.feature-banner {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.feature-card {
+    background-color: var(--secondary-background);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(29, 161, 242, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.feature-icon i {
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+.feature-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.feature-content p {
+    color: var(--secondary-text);
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* Enhanced dashboard styles */
+.dashboard-container {
+    margin-top: 30px;
+}
+
+.tweet-form-card .card-header {
+    border-bottom: none;
+    padding-bottom: 5px;
+}
+
+.tweet-input {
+    background-color: var(--secondary-background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    resize: none;
+    padding: 15px;
+    transition: border-color 0.3s;
+}
+
+.tweet-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(29, 161, 242, 0.25);
+}
+
+.tweet-btn {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 600;
+}
+
+.tweet-image {
+    border-radius: 10px;
+    margin-top: 10px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* Card styling enhancements */
+.card {
+    background-color: var(--secondary-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Tweet card improvements */
+.tweet-card {
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1.1rem;
+}
+
+.tweet-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.tweet-actions button {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.tweet-actions i {
+    margin-right: 5px;
+}
+
+.tweet-actions button:hover {
+    color: var(--primary-color) !important;
+}
+
+.tweet-actions button:hover .fa-heart {
+    color: #e0245e !important;
+}
+
+.tweet-actions button:hover .fa-retweet {
+    color: #17bf63 !important;
+}
+
+/* Profile image enhancements */
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--primary-color);
+    padding: 2px;
+    background-color: var(--secondary-background);
+}
+
+/* Notification styles */
+.notification-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Badge styling */
+.badge {
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Improved button styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Improved sidebar navigation */
+.sidebar-nav .list-group-item {
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s, border-left-color 0.2s;
+}
+
+.sidebar-nav .list-group-item.active,
+.sidebar-nav .list-group-item:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+/* Enhanced feed filter */
+.feed-filter .btn-group {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.feed-filter .btn {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 15px;
+}
+
+/* Animation for new content */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Empty state styling */
+.tweets-feed .text-center {
+    padding: 40px 20px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+    .feature-banner {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .feature-card {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    
+    .profile-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .feature-icon i {
+        font-size: 24px;
+    }
+    
+    .feature-content h3 {
+        font-size: 16px;
+    }
+}
+
+/* Follow button improvements */
+.follow-btn {
+    font-size: 1.1rem !important;
+    padding: 0.5rem 1.2rem !important;
+    min-width: 110px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.follow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Make suggested users more visible */
+.list-group-item {
+    padding: 1rem;
+}
+
+.list-group-item h6 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.follow-btn i {
+    margin-right: 6px;
+}
